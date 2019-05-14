@@ -1,0 +1,63 @@
+.logo{
+    margin-top: 1%;
+    margin-left: 5%;
+}
+
+@media (min-width: 992px){
+    .navbar{
+ z-index:9;
+ background-color: rgba(18, 11, 18, 0.36);
+}
+
+    .fullCarousel{
+  position:absolute;
+  width:100%;
+  top:0;
+}
+
+    .carousel-caption{
+    padding: 20%;
+}
+
+}
+
+@media (max-width: 991.98px) {
+    .navbar{
+ background-color: rgb(73, 70, 72);
+} }
+
+
+
+
+
+
+.navbar-i-items{
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.nav-i-link-p{
+    margin-right: 25px;
+
+}
+
+
+.navbar-i-light{
+    color: white;
+}
+
+.navbar-nav a{
+    color: gainsboro !important;
+}
+
+
+.navbar-nav a:hover{
+    color: white !important;
+}
+
+
+
+.nav-i-link .active{
+    color: white !important;
+}
+
