@@ -163,3 +163,33 @@ a:hover{text-decoration: none ; color : black;}
   line-height: 1.428571429;
   border-radius: 15px;
 }
+
+
+
+ul.red {
+  list-style: none; /* Remove default bullets */
+}
+
+ul.red li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: red; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+
+
+ul.green {
+  list-style: none; /* Remove default bullets */
+}
+
+ul.green li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #1ca456; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}

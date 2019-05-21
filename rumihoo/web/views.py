@@ -60,5 +60,8 @@ def tour(request , id):
     context['tour'] = tour
     context['comments'] = CommentTour.objects.filter(Tour=tour)
     context['rout'] = tour.DistinationList.split('\n')
-    #print(tour.DistinationList.split('\n'))
+    context['itinerary'] = Itinerary.objects.filter(Tour=tour)
+
+    context['includes'] = tour.Includes.split('\n')
+    context['excludes'] = tour.Excludes.split('\n')
     return render(request, 'tour.html', context)
