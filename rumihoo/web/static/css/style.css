@@ -25,7 +25,13 @@
 @media (max-width: 991.98px) {
     .navbar{
  background-color: rgb(73, 70, 72);
-} }
+}
+
+    .process{
+        display: none !important;
+    }
+
+}
 
 
 
@@ -193,3 +199,8 @@ ul.green li::before {
   width: 1em; /* Also needed for space (tweak if needed) */
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
+
+
+
+
+

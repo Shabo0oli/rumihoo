@@ -62,6 +62,8 @@ class Tour(models.Model):
 
     MainImage = models.ImageField(upload_to='web/static/image/tourImage/', null=True , blank=True)
 
+    Googlemap = models.CharField(blank=True , null=True , max_length=900)
+
 
 
 

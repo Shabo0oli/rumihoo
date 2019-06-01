@@ -9,224 +9,280 @@
 
 <div class="container-fluid" style="margin-top: 1%; margin-left: 3%;">
 
-    <div class="col-8">
-        <div class="card">
-            <div class="card-header" style="background-color: white">
-                <div class="row">
-                    <div class="col-7">
-                        <h4 style="color: #07036a;"> {{tour.Title}} </h4>
-                        <div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header" style="background-color: white">
+                    <div class="row">
+                        <div class="col-7">
+                            <h4 style="color: #07036a;"> {{tour.Title}} </h4>
+                            <div class="container">
 
 
 
-                            <div class="process">
-                                <div class="process-row">
-                                    {% for place in rout %}
-                                    <div class="process-step">
+                                <div class="process">
+                                    <div class="process-row">
+                                        {% for place in rout %}
+                                        <div class="process-step">
 
-                                        <button type="button" class="btn btn-default btn-circle" disabled="disabled"><div>{{place}}</div><div><i class="fas fa-circle"></i></div></button>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-5" style="text-align: right;">
-                        <div style="margin-top: 3%" class="badge badge-pill badge-light" style="color:{{tour.Tourtype.Color}}">{{tour.Tourtype.Name}}</div>
-                        <div style="margin-top: 3%"> {{comments|length}} Reviews starts </div>
-                        <div style="margin-top: 3%"> <i class="fas fa-route"></i>  Distance : {{tour.Distance}} KM </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-header" style="background-color: white">
-                <div class="row">
-                    <div class="col-3">
-                        <div> <b> Durations </b> </div>
-                        <div> {{tour.Dayduration}} Days </div>
-                    </div>
-
-                    <div class="col-3">
-
-                        <div> <b> Tour Type </b> </div>
-                        <div> {{tour.Tourtype.Name}} </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div> <b> Group Size </b> </div>
-                        <div> {{tour.MinGroupSize}} - {{tour.MaxGroupSize}} </div>
-                    </div>
-
-                    <div class="col-3">
-
-                        <div> <b> Physical Rate </b> </div>
-                        <div> {{tour.PhysicalRate}} of 5 </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-body">
-
-                <div class="accordion" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Overview
-                                </button>
-                            </h2>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-9">
-                                        {{tour.Overview|linebreaks}}
-                                    </div>
-                                    <div class="col-3" style="border-left-color:#120b12; border-left-style: solid; border-left-width: 1px; ">
-                                        <div>
-                                            <b> &#8226; Meals</b><br>
-                                            {% for meal in tour.Meal.all %}
-                                            {{meal.Name}}<br>
-                                            {% endfor %}
+                                            <button type="button" class="btn btn-default btn-circle" disabled="disabled"><div>{{place}}</div><div><i class="fas fa-circle"></i></div></button>
                                         </div>
-
-
-                                        <div>
-                                            <b> &#8226; Transport</b><br>
-                                            {% for transport in tour.Transport.all %}
-                                            {{transport.Name}} -
-                                            {% endfor %}
-                                        </div>
-
-                                        <div>
-                                            <b> &#8226; Accomodation</b><br>
-                                            {% for accomodation in tour.Accomodation.all %}
-                                            {{accomodation.Name}} <br>
-                                            {% endfor %}
-                                        </div>
-
-                                        <div>
-                                            <b> &#8226; Guide Language</b><br>
-                                            {% for lang in tour.Language.all %}
-                                            {{lang.Name}} -
-                                            {% endfor %}
-                                        </div>
+                                        {% endfor %}
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Itinerary
-                                </button>
-                            </h2>
+                        <div class="col-5" style="text-align: right;">
+                            <div style="margin-top: 3%" class="badge badge-pill badge-light" style="color:{{tour.Tourtype.Color}}">{{tour.Tourtype.Name}}</div>
+                            <div style="margin-top: 3%"> {{comments|length}} Reviews starts </div>
+                            <div style="margin-top: 3%"> <i class="fas fa-route"></i>  Distance : {{tour.Distance}} KM </div>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
+                    </div>
+                </div>
+
+                <div class="card-header" style="background-color: white">
+                    <div class="row">
+                        <div class="col-3">
+                            <div style="width: 30%; display: inline-table;"><img src="/static/image/duration.png"></div>
+                            <div style="width: 70%; display: inline-table; float: right;">
+                                <p> <b> Durations </b> <br/>
+                                    {{tour.Dayduration}} Days </p>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+
+
+                            <div style="width: 30%; display: inline-table;"><img src="/static/image/type.png"></div>
+                            <div style="width: 70%; display: inline-table; float: right;">
+                                <p> <b> Tour Type </b> <br/>
+                                    {{tour.Tourtype.Name}} </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-3">
+
+                            <div style="width: 30%; display: inline-table;"><img src="/static/image/siE.png"></div>
+                            <div style="width: 70%; display: inline-table; float: right;">
+                                <p> <b> Group Size </b> <br/>
+                                    {{tour.MinGroupSize}} - {{tour.MaxGroupSize}} </p>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+
+
+                            <div style="width: 30%; display: inline-table;"><img src="/static/image/rate.png"></div>
+                            <div style="width: 70%; display: inline-table; float: right;">
+                                <p> <b> Physical Rate </b> <br/>
+                                    {{tour.PhysicalRate}} of 5 </p>
+                            </div>
 
 
 
+                        </div>
+                    </div>
+                </div>
 
+                <div class="card-body">
 
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Overview
+                                    </button>
+                                </h2>
+                            </div>
 
-                                <div class="accordion" id="accordionExample2">
-                                    {% for it in itinerary %}
-                                    <div class="card">
-                                        <div class="card-header"  id="heading{{it.id}}">
-                                            <h2 class="mb-0">
-                                                <button class="btn " type="button" data-toggle="collapse" data-target="#collapse{{it.id}}" aria-expanded="true" aria-controls="collapse{{it.id}}">
-                                                    {{it.Title}}
-                                                </button>
-                                            </h2>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            {{tour.Overview|linebreaks}}
                                         </div>
+                                        <div class="col-3" style="border-left-color:#120b12; border-left-style: solid; border-left-width: 1px; ">
+                                            <div>
+                                                <b> &#8226; Meals</b><br>
+                                                {% for meal in tour.Meal.all %}
+                                                {{meal.Name}}<br>
+                                                {% endfor %}
+                                            </div>
 
-                                        <div id="collapse{{it.id}}" class="collapse show" aria-labelledby="heading{{it.id}}" data-parent="#accordionExample2">
-                                            <div class="card-body" style="background-color: #ebebeb">
-                                                {{it.Text|linebreaks}}
+
+                                            <div>
+                                                <b> &#8226; Transport</b><br>
+                                                {% for transport in tour.Transport.all %}
+                                                {{transport.Name}} -
+                                                {% endfor %}
+                                            </div>
+
+                                            <div>
+                                                <b> &#8226; Accomodation</b><br>
+                                                {% for accomodation in tour.Accomodation.all %}
+                                                {{accomodation.Name}} <br>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div>
+                                                <b> &#8226; Guide Language</b><br>
+                                                {% for lang in tour.Language.all %}
+                                                {{lang.Name}} -
+                                                {% endfor %}
                                             </div>
                                         </div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
 
-
-
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <b>Includes / Excludes </b>
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <b style="color: lawngreen"> Includes </b>
-                                        <ul class="green">
-                                            {% for inc in includes %}
-                                            <li> {{inc}} </li>
-                                            {% endfor %}
-                                        </ul>
-
-                                    </div>
-                                    <div class="col-6">
-                                        <b style="color: red"> Excludes </b>
-                                        <ul class="red">
-                                            {% for exc in excludes %}
-                                            <li> {{exc}} </li>
-                                            {% endfor %}
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Itinerary
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
 
 
 
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                                <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <b>Reviews </b>
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                            <div class="card-body">
-                                
+
+
+
+                                    <div class="accordion" id="accordionExample2">
+                                        {% for it in itinerary %}
+                                        <div class="card">
+                                            <div class="card-header"  id="heading{{it.id}}">
+                                                <h2 class="mb-0">
+                                                    <button class="btn " type="button" data-toggle="collapse" data-target="#collapse{{it.id}}" aria-expanded="true" aria-controls="collapse{{it.id}}">
+                                                        {{it.Title}}
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id="collapse{{it.id}}" class="collapse show" aria-labelledby="heading{{it.id}}" data-parent="#accordionExample2">
+                                                <div class="card-body" style="background-color: #ebebeb">
+                                                    {{it.Text|linebreaks}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <b>Includes / Excludes </b>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <b style="color: lawngreen"> Includes </b>
+                                            <ul class="green">
+                                                {% for inc in includes %}
+                                                <li> {{inc}} </li>
+                                                {% endfor %}
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <b style="color: red"> Excludes </b>
+                                            <ul class="red">
+                                                {% for exc in excludes %}
+                                                <li> {{exc}} </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <b>Reviews </b>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
 
                 </div>
 
+            </div>
+        </div>
 
+
+        <div class="col-3">
+
+            <div class="card">
+                <div class="card-header" style="background-color: white">
+                    <i class="fas fa-share-alt" style="margin-right: 4%;"></i>
+                    <i class="far fa-heart" style="margin-right: 4%;"></i>
+                    <a href="#" style="float: right;color: orange"> Gallery </a>
+                </div>
+
+                {% if tour.Googlemap %}<div>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{tour.Googlemap}}" allowfullscreen></iframe>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><p style="margin: 0%;"> From <b> €  {{tour.MinPrice}} </b> </p></li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p style="margin: 0%;">Adults</p>
+                                <p style="color: #4f4f4f; margin: 0%;"> + 18 </p>
+                            </div>
+                            <div class="col-6" style="display: table">
+                                <p style="vertical-align: middle;display: table-cell;text-align: center;padding-top: 10%;">
+                                    <a onclick="minus()"> <i class="fas fa-minus"></i> </a> <span id="adults">1</span> <a onclick="plus()"> <i class="fas fa-plus"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item"><p style="margin: 0%;"> Date </p><input id="theDate" type="date" class="form-control" style="border: none;" ></li>
+                    <li class="list-group-item" style="text-align: center"><button type="button" style="border-radius:30px;" class="btn btn-outline-primary btn-lg btn-block">Book now</button></li>
+                </ul>
             </div>
 
         </div>
-    </div>
-
-
-    <div class="col-4">
-
 
     </div>
 
