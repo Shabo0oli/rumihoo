@@ -21,6 +21,9 @@ import json
 from .models import *
 
 
+def grouped(l, n):
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
 
 
 def index(request):
@@ -35,22 +38,11 @@ def index(request):
             toursinfo.append(tour_i)
 
         i=0
-           # while len(toursinfo) < 4 :
-           #  toursinfo.append(toursinfo[i])
-           #  i = i+1
         context['tours'] = toursinfo
 
-        if len(tours) > 4 :
-            toursinfo = []
-            for tour in tours[4:]:
-                tour_i = tour
-                tour_i.commentcount = CommentTour.objects.filter(Tour=tour).count()
-                toursinfo.append(tour_i)
-            i = 0
-            # while len(toursinfo) < 4:
-            #     toursinfo.append(toursinfo[i])
-            #     i = i + 1
-            context['tours2'] = toursinfo
+    context['destinations_list'] = grouped(Destination.objects.all(), 3)
+    context['blog_list'] = grouped(Blog.objects.all(), 3)
+
     return render(request, 'index.html', context)
 
 

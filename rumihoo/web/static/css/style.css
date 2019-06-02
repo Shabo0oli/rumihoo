@@ -201,6 +201,12 @@ ul.green li::before {
 }
 
 
+.bottom-left {
+  position: absolute;
+  bottom: 20px;
+  left: 32px;
+}
+
 
 
 

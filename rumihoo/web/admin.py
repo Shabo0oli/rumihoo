@@ -13,5 +13,7 @@ admin.site.register(Itinerary)
 admin.site.register(TourImage)
 admin.site.register(Language)
 admin.site.register(Transport)
+admin.site.register(Destination)
+admin.site.register(Blog)
 
 

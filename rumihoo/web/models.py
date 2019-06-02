@@ -87,3 +87,14 @@ class CommentTour(models.Model):
     Text = models.CharField(max_length=200)
     Author = models.CharField(max_length=60)
     Tour = models.ForeignKey(Tour , on_delete=models.CASCADE)
+
+
+class Destination(models.Model):
+    Text = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+
+
+class Blog(models.Model):
+    Text = models.TextField()
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Title = models.CharField(max_length=100)
