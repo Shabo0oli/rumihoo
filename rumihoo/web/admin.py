@@ -16,4 +16,16 @@ admin.site.register(Transport)
 admin.site.register(Destination)
 admin.site.register(Blog)
 
+admin.site.register(Passenger)
+admin.site.register(Booking)
+
+admin.site.register(LocalFood)
+admin.site.register(WhereToEat)
+admin.site.register(UnescoSite)
+admin.site.register(Handicraft)
+admin.site.register(Nature)
+admin.site.register(MustSee)
+
+
+
 

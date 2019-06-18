@@ -48,7 +48,7 @@
                     <a class="nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Signup</a>
+                    <a role="button"  data-toggle="modal" data-target="#signup" class="nav-link" href="#signup">Signup</a>
                 </li>
             </ul>
 
@@ -108,6 +108,43 @@
 
 </div>
 
+</div>
+
+
+
+<!--  Signup -->
+
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signupTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signupTitle">Signup</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <label for="signuoEmail1">Email address</label>
+                        <input type="email" class="form-control" id="signuoEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="signuoPassworn">Password</label>
+                        <input type="password" class="form-control" id="signuoPassworn" placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -177,6 +214,12 @@
 
     var today = year + "-" + month + "-" + day;
     $("#theDate").attr("value", today);
+});
+</script>
+
+<script>
+    jQuery('.colbut').click( function(e) {
+    jQuery('.collapse.show').collapse('hide');
 });
 </script>
 </body>

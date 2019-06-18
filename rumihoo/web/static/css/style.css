@@ -209,4 +209,23 @@ ul.green li::before {
 
 
 
+.FixedHeightContainer
+{
+  height: 350px;
 
+}
+.ContentScroll
+{
+  height:350px;
+  overflow:auto;
+}
+
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 4;
+  }
+}

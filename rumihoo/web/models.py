@@ -90,11 +90,80 @@ class CommentTour(models.Model):
 
 
 class Destination(models.Model):
-    Text = models.CharField(max_length=100)
+    Name = models.CharField(max_length=100)
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Population = models.IntegerField(blank=True, null=True)
+    Climate = models.CharField(max_length=20 , blank=True , null=True)
+    Type = models.ForeignKey(Type , blank=True, null=True , on_delete=models.CASCADE)
+    Distance = models.IntegerField(blank=True , null=True)
+    ReviewText = models.TextField(blank=True , null=True)
+    Meal = models.ManyToManyField(Meal, blank=True, null=True)
+    Transport = models.ManyToManyField(Transport, blank=True, null=True)
+    Language = models.ManyToManyField(Language, blank=True, null=True)
+    Accomodation = models.ManyToManyField(Accomodation, blank=True, null=True)
+
+
+
+
+class LocalFood(models.Model):
+    Name = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+
+class MustSee(models.Model):
+    Name = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+
+class Nature(models.Model):
+    Name = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+
+class WhereToEat(models.Model):
+    Name = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+
+class Handicraft(models.Model):
+    Name = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+
+class UnescoSite(models.Model):
+    Name = models.CharField(max_length=100)
+    Image = models.ImageField(upload_to='web/static/image/DistImage/')
+    Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+
 
 
 class Blog(models.Model):
     Text = models.TextField()
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Title = models.CharField(max_length=100)
+
+
+
+class Passenger(models.Model):
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    PhoneNumber = models.CharField(max_length=30 , null=True , blank=True)
+
+
+
+
+class Booking(models.Model):
+    Tour = models.ForeignKey(Tour , on_delete=models.CASCADE)
+    Passenger = models.ForeignKey(Passenger, on_delete=models.CASCADE)
+    Date = models.DateField(null=True,blank=True)
+    ResrvTime = models.DateTimeField(auto_now_add=True)
+    Status = models.CharField(max_length=50 , null=True, blank=True)
+    Persons = models.IntegerField(null=True,blank=True)
+    PyamentStatus = models.CharField(max_length=100, null=True, blank=True)
+    Track = models.CharField(max_length=50, null=True, blank=True)
+    Order = models.CharField(max_length=20)

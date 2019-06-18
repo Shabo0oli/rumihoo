@@ -1,0 +1,399 @@
+{% extends "template.html"%}
+{% load staticfiles %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid" style="margin-top: 1%; padding-left: 10%">
+
+    <div class="row">
+        <div class="card" style="width: 85%;border-radius:60px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2"> <b>{{destination.Name}}</b> </div>
+                    <div class="col-8" style="text-align: center">
+                        <a style="margin-left: 3%">General Information</a>
+                        <a href="#tours" style="margin-left: 3%">Tours</a>
+                        <a style="margin-left: 3%">Activities</a>
+                        <a style="margin-left: 3%">Map</a>
+                        <a style="margin-left: 3%">Review</a>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-share-alt" style="margin-right: 4%;"></i>
+                        <i class="far fa-heart" style="margin-right: 4%;"></i>
+                        <a href="#" style="float: right;color: orange"> Gallery </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="container-fluid" style="margin-top: 1%; padding-left: 10%">
+
+    <div class="row" >
+
+        <div class="col-3">
+            <div class="list-group">
+                <button class="colbut list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >Review</button>
+                <button class="colbut list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Must see</button>
+                <button class="colbut list-group-item list-group-item-action"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Nature</button>
+                <button class="colbut list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">Local foods</button>
+                <button class="colbut list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFiv">Where to eat</button>
+                <button class="colbut list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">Handicrafts</button>
+                <button class="colbut list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">UNESCO sites</button>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-7" >
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" >
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5> Review</h5>
+                    </div>
+                    <div class="card-header" style="background-color: white">
+                        <div class="row">
+                            <div class="col-3">
+                                <div style="width: 30%; display: inline-table;"><img src="/static/image/duration.png"></div>
+                                <div style="width: 70%; display: inline-table; float: right;">
+                                    <p> <b> Population </b> <br/>
+                                        {{destination.Population}} </p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+
+
+                                <div style="width: 30%; display: inline-table;"><img src="/static/image/type.png"></div>
+                                <div style="width: 70%; display: inline-table; float: right;">
+                                    <p> <b> Climate</b> <br/>
+                                        {{destination.Climate}} </p>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-3">
+
+                                <div style="width: 30%; display: inline-table;"><img src="/static/image/siE.png"></div>
+                                <div style="width: 70%; display: inline-table; float: right;">
+                                    <p> <b> Type </b> <br/>
+                                        {{destination.Type.Name}} </p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+
+
+                                <div style="width: 30%; display: inline-table;"><img src="/static/image/rate.png"></div>
+                                <div style="width: 70%; display: inline-table; float: right;">
+                                    <p> <b> Distance</b> <br/>
+                                        {{destination.Distance}} </p>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="FixedHeightContainer">
+                        <div class="ContentScroll">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-9">
+                                        {{destination.ReviewText|linebreaks}}
+                                    </div>
+                                    <div class="col-3" style="border-left-color:#120b12; border-left-style: solid; border-left-width: 1px; ">
+                                        <div>
+                                            <b> &#8226; Meals</b><br>
+                                            {% for meal in destination.Meal.all %}
+                                            {{meal.Name}}<br>
+                                            {% endfor %}
+                                        </div>
+
+
+                                        <div>
+                                            <b> &#8226; Transport</b><br>
+                                            {% for transport in destination.Transport.all %}
+                                            {{transport.Name}} -
+                                            {% endfor %}
+                                        </div>
+
+                                        <div>
+                                            <b> &#8226; Accomodation</b><br>
+                                            {% for accomodation in destination.Accomodation.all %}
+                                            {{accomodation.Name}} <br>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div>
+                                            <b> &#8226; Guide Language</b><br>
+                                            {% for lang in destination.Language.all %}
+                                            {{lang.Name}} -
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+                <div class="card">
+                    <div class="card-header">
+                        Must see
+                    </div>
+                    <div class="card-body">
+                        <div class="FixedHeightContainer">
+
+                            <div class="ContentScroll">
+                                <div class="card-columns">
+                                    {% for must in mustsees %}
+                                    <div class="card">
+                                        <img src="/{{must.Image|cut:"web/"}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{must.Name}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+
+                <div class="card">
+                    <div class="card-header">
+                        Nature
+                    </div>
+                    <div class="card-body">
+                        <div class="FixedHeightContainer">
+
+                            <div class="ContentScroll">
+                                <div class="card-columns">
+                                    {% for nature in natures %}
+                                    <div class="card">
+                                        <img src="/{{nature.Image|cut:"web/"}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{nature.Name}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
+                <div class="card">
+                    <div class="card-header">
+                        Local Food
+                    </div>
+                    <div class="card-body">
+                        <div class="FixedHeightContainer">
+
+                            <div class="ContentScroll">
+                                <div class="card-columns">
+                                    {% for food in localfoods %}
+                                    <div class="card">
+                                        <img src="/{{food.Image|cut:"web/"}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{food.Name}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive">
+                <div class="card">
+                    <div class="card-header">
+                        Where to eat
+                    </div>
+                    <div class="card-body">
+                        <div class="FixedHeightContainer">
+
+                            <div class="ContentScroll">
+                                <div class="card-columns">
+                                    {% for where in wheres %}
+                                    <div class="card">
+                                        <img src="/{{where.Image|cut:"web/"}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{where.Name}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix">
+                <div class="card">
+                    <div class="card-header">
+                        Handicrafts
+                    </div>
+                    <div class="card-body">
+                        <div class="FixedHeightContainer">
+
+                            <div class="ContentScroll">
+                                <div class="card-columns">
+                                    {% for handicraft in handicrafts %}
+                                    <div class="card">
+                                        <img src="/{{handicraft.Image|cut:"web/"}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{handicraft.Name}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven">
+                <div class="card">
+                    <div class="card-header">
+                        Unesco Site
+                    </div>
+                    <div class="card-body">
+                        <div class="FixedHeightContainer">
+
+                            <div class="ContentScroll">
+                                <div class="card-columns">
+                                    {% for unesco in unescos %}
+                                    <div class="card">
+                                        <img src="/{{unesco.Image|cut:"web/"}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{unesco.Name}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div id="tours">
+<section class="carousel carousel1 slide" data-ride="carousel" id="postsCarousel" style="margin-top: 5%;" >
+    <div class="container">
+        <div class="row">
+            <div class="col-6  lead">
+                <h4>Tours</h4>
+            </div>
+            <div class="col-6 text-right lead">
+                <a href="#">see all tours</a>
+                <a href="#"><span class="badge badge-pill badge-light">make your own tour</span></a>
+                <a class="btn btn-secondary-outline prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                <a class="btn btn-secondary-outline next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-0 mt-2">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card-deck">
+                    {% for tour in tours %}
+                    <div class="card h-100">
+                        <a href="/tour/{{tour.id}}">
+                            <div class="card-img-top card-img-top-250">
+                                <img class="img-fluid" src="/{{tour.MainImage|cut:"web/"}} " alt="Carousel 1">
+                            </div>
+                            <div class="card-body pt-2">
+                                <div  >
+                                    <h5>
+                                        {{tour.Title}}
+                                    </h5>
+                                </div >
+                                <div style="margin-top: 10%;">
+
+                                    <span><i class="far fa-clock"></i> {{tour.Dayduration}} days </span>
+                                    <span style="float: right"> <span class="badge badge-pill badge-light" style="color:{{tour.Tourtype.Color}}">{{tour.Tourtype.Name}}</span> </span>
+
+                                </div>
+
+                                <div style="margin-top: 5%;">
+
+                                    <span>{{tour.commentcount}} review </span>
+                                    <span style="float: right"> Stars </span>
+
+                                </div>
+
+
+                                <div style="margin-top: 5%;">
+                                    From <b> € {{tour.MinPrice}} </b>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</div>
+
+
+
+{% endblock %}

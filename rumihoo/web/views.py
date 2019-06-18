@@ -57,3 +57,31 @@ def tour(request , id):
     context['includes'] = tour.Includes.split('\n')
     context['excludes'] = tour.Excludes.split('\n')
     return render(request, 'tour.html', context)
+
+def destination(request , name)  :
+    context = {}
+    destination = Destination.objects.get(Name = name)
+    context['destination'] = destination
+    context['localfoods'] = LocalFood.objects.filter(Destination=destination)
+    context['mustsees'] = MustSee.objects.filter(Destination=destination)
+    context['natures'] = Nature.objects.filter(Destination=destination)
+    context['wheres'] = WhereToEat.objects.filter(Destination=destination)
+    context['handicrafts'] = Handicraft.objects.filter(Destination=destination)
+    context['unescos'] = UnescoSite.objects.filter(Destination=destination)
+
+
+    tours = Tour.objects.all()
+
+    if len(tours) :
+        toursinfo = []
+        for tour in tours :
+            tour_i = tour
+            tour_i.commentcount = CommentTour.objects.filter(Tour= tour).count()
+            toursinfo.append(tour_i)
+
+        i=0
+        context['tours'] = toursinfo
+
+
+
+    return render(request, 'destination.html', context)
