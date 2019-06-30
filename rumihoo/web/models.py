@@ -17,18 +17,33 @@ class Type(models.Model):
     Name = models.CharField(max_length=100)
     Color = ColorField(default='#FFFFFF')
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 class Meal(models.Model):
     Name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "{}".format(self.Name)
 
 
 class Transport(models.Model):
     Name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 class Accomodation(models.Model):
     Name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 class Language(models.Model):
     Name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "{}".format(self.Name)
 
 class Tour(models.Model):
     Title = models.CharField(max_length=100)
@@ -64,9 +79,6 @@ class Tour(models.Model):
 
     Googlemap = models.CharField(blank=True , null=True , max_length=900)
 
-
-
-
     def __str__(self):
         return "{}".format(self.Title)
 
@@ -78,10 +90,16 @@ class Itinerary(models.Model):
     Text = models.TextField(blank=True , null=True)
     Highlight = models.TextField(blank=True , null=True)
 
+    def __str__(self):
+        return "{} - {}".format(self.Title , self.Tour.Title)
+
 class TourImage(models.Model):
     Caption = models.CharField(max_length=100)
     Tour = models.ForeignKey(Tour , blank=True, null=True , on_delete=models.CASCADE)
     Image = models.ImageField(upload_to='web/static/image/tourImage/')
+
+    def __str__(self):
+        return "{} - {}".format(self.Caption, self.Tour.Title)
 
 class CommentTour(models.Model):
     Text = models.CharField(max_length=200)
@@ -102,6 +120,9 @@ class Destination(models.Model):
     Language = models.ManyToManyField(Language, blank=True, null=True)
     Accomodation = models.ManyToManyField(Accomodation, blank=True, null=True)
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 
 
 
@@ -110,11 +131,17 @@ class LocalFood(models.Model):
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 
 class MustSee(models.Model):
     Name = models.CharField(max_length=100)
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}".format(self.Name)
 
 
 class Nature(models.Model):
@@ -122,11 +149,17 @@ class Nature(models.Model):
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 
 class WhereToEat(models.Model):
     Name = models.CharField(max_length=100)
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}".format(self.Name)
 
 
 class Handicraft(models.Model):
@@ -134,11 +167,17 @@ class Handicraft(models.Model):
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "{}".format(self.Name)
+
 
 class UnescoSite(models.Model):
     Name = models.CharField(max_length=100)
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Destination = models.ForeignKey(Destination , blank=True, null=True , on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}".format(self.Name)
 
 
 
@@ -147,6 +186,9 @@ class Blog(models.Model):
     Text = models.TextField()
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "{}".format(self.Title)
 
 
 
