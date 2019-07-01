@@ -45,10 +45,20 @@ def index(request):
 
     return render(request, 'index.html', context)
 
-
+@csrf_exempt
 def tour(request , id):
     context = {}
-    tour = Tour.objects.get(id = id)
+    tour = Tour.objects.get(id=id)
+    if request.method =="POST":
+        user = User.objects.create_user(username="Pass_"+request.POST['name'], email=request.POST['email'], password="1234")
+        user.save()
+        passenger = Passenger(Email=request.POST['email'] , PhoneNumber=request.POST['phone'] , User=user)
+        passenger.save()
+        booking = Booking(Passenger=passenger , Tour = tour , Date=request.POST['date'] , Persons=int(request.POST['number']))
+        booking.save()
+        context['bookmessage'] = 'Successfully booked'
+
+
     context['tour'] = tour
     context['comments'] = CommentTour.objects.filter(Tour=tour)
     context['rout'] = tour.DistinationList.split('\n')

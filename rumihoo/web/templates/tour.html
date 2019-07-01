@@ -11,6 +11,14 @@
 
     <div class="row maxwid">
         <div class="col-8">
+
+            {% if bookmessage %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">{{bookmessage}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            {% endif %}
             <div class="card">
                 <div class="card-header" style="background-color: white">
                     <div class="row">
@@ -271,10 +279,10 @@
                 </div>
 
                 {% if tour.Googlemap %}<div>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{tour.Googlemap}}" allowfullscreen></iframe>
-                    </div>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{tour.Googlemap}}" allowfullscreen></iframe>
                 </div>
+            </div>
                 {% endif %}
 
 
@@ -294,11 +302,90 @@
                         </div>
                     </li>
                     <li class="list-group-item"><p style="margin: 0%;"> Date </p><input id="theDate" type="date" class="form-control" style="border: none;" ></li>
-                    <li class="list-group-item" style="text-align: center"><button type="button" style="border-radius:30px;" class="btn btn-outline-primary btn-lg btn-block">Book now</button></li>
+                    <li class="list-group-item" style="text-align: center"><button type="button" style="border-radius:30px;" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#bookModal">Book now</button></li>
                 </ul>
             </div>
 
         </div>
+
+        <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bookModalLabel">Tour Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+
+                            <div class="form-group">
+                                <label for="number" class="col-form-label">Adults:</label>
+                                <input type="text" name="number"  class="form-control" id="number" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date" class="col-form-label">From Date:</label>
+                                <input type="date" name="date"  class="form-control" id="date" required="required" >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" name="name" class="form-control" id="name" required="required">
+                            </div>
+
+                             <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="maleRadio1" value="male" checked>
+                                            <label class="form-check-label" for="maleRadio1">
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="femaleRadio1" value="female">
+                                            <label class="form-check-label" for="femaleRadio1">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email:</label>
+                                <input type="text" name="email" class="form-control" id="email" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="col-form-label">Phone number:</label>
+                                <input type="text" name="phone" class="form-control" id="phone" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="dateofbrith" class="col-form-label">Date of Brith:</label>
+                                <input type="date" class="form-control" id="dateofbrith">
+                            </div>
+
+
+
+
+
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Book</button>
+                    </div>
+                            </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
 
     </div>
 

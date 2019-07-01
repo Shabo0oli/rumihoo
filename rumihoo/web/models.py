@@ -195,6 +195,10 @@ class Blog(models.Model):
 class Passenger(models.Model):
     User = models.ForeignKey(User, on_delete=models.CASCADE)
     PhoneNumber = models.CharField(max_length=30 , null=True , blank=True)
+    Email = models.CharField(max_length=50 , null=True , blank=True)
+
+    def __str__(self):
+        return "{}".format(self.User)
 
 
 
@@ -209,3 +213,6 @@ class Booking(models.Model):
     PyamentStatus = models.CharField(max_length=100, null=True, blank=True)
     Track = models.CharField(max_length=50, null=True, blank=True)
     Order = models.CharField(max_length=20)
+
+    def __str__(self):
+        return "{} - {}".format(self.Passenger.User.username , self.Passenger.PhoneNumber )
