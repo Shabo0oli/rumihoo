@@ -15,7 +15,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 import json
 
 
-
+import random
 
 
 from .models import *
@@ -50,7 +50,7 @@ def tour(request , id):
     context = {}
     tour = Tour.objects.get(id=id)
     if request.method =="POST":
-        user = User.objects.create_user(username="Pass_"+request.POST['name'], email=request.POST['email'], password="1234")
+        user = User.objects.create_user(username="Pass_"+request.POST['name']+str(random.randint(1,1000000)), email=request.POST['email'], password="1234")
         user.save()
         passenger = Passenger(Email=request.POST['email'] , PhoneNumber=request.POST['phone'] , User=user)
         passenger.save()
