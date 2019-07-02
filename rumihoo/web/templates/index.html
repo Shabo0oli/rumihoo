@@ -39,9 +39,7 @@
                     {% for tour in tours %}
                     <div class="card h-100">
                         <a href="/tour/{{tour.id}}">
-                            <div class="card-img-top card-img-top-250">
-                                <img class="img-fluid" src="{{tour.MainImage|cut:"web/"}} " alt="Carousel 1">
-                            </div>
+                            <img class="card-img-top responsive" style="width: 100%;" src="{{tour.MainImage|cut:"web/"}} " alt="Carousel 1">
                             <div class="card-body pt-2">
                                 <div  >
                                     <h5>
