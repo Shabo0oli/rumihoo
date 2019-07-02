@@ -29,17 +29,7 @@ def grouped(l, n):
 def index(request):
     context = {}
     tours = Tour.objects.all()
-
-    if len(tours) :
-        toursinfo = []
-        for tour in tours :
-            tour_i = tour
-            tour_i.commentcount = CommentTour.objects.filter(Tour= tour).count()
-            toursinfo.append(tour_i)
-
-        i=0
-        context['tours'] = toursinfo
-
+    context['tours_list'] = grouped(tours, 3)
     context['destinations_list'] = grouped(Destination.objects.all(), 3)
     context['blog_list'] = grouped(Blog.objects.all(), 3)
 

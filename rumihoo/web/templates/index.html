@@ -33,7 +33,8 @@
     </div>
     <div class="container pt-0 mt-2">
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            {% for tours in tours_list%}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
                 <div class="card-deck">
                     {% for tour in tours %}
                     <div class="card h-100">
@@ -72,7 +73,7 @@
 
                 </div>
             </div>
-
+            {% endfor %}
         </div>
     </div>
 </section>
