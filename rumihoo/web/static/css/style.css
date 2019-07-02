@@ -221,14 +221,7 @@ ul.green li::before {
 }
 
 
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 4;
-  }
-}
+
 
 
 .maxwid{
@@ -247,3 +240,10 @@ ul.green li::before {
   border-right: 3px solid gray;
   height: 90%;
 }
+
+
+.card-columns {
+     -webkit-column-count:3;
+        -moz-column-count:3;
+        column-count:3;
+  }
