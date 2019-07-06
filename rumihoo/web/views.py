@@ -56,6 +56,18 @@ def tour(request , id):
 
     context['includes'] = tour.Includes.split('\n')
     context['excludes'] = tour.Excludes.split('\n')
+
+    if not request.session.exists(request.session.session_key):
+        request.session.create()
+    sesssionkey = Session.objects.get(session_key=request.session.session_key)
+
+    context['likesnumber'] = len(Like.objects.filter(RelPost = tour))
+
+    if len(Like.objects.filter( RelPost=tour , User=sesssionkey ) ) == 0 :
+        context['classattr'] = "far gray"
+    else :
+        context['classattr'] = "fa red"
+
     return render(request, 'tour.html', context)
 
 def destination(request , name)  :
@@ -85,3 +97,26 @@ def destination(request , name)  :
 
 
     return render(request, 'destination.html', context)
+
+
+@csrf_exempt
+def like(request):
+    if not request.session.exists(request.session.session_key):
+        request.session.create()
+    tour = Tour.objects.get(id=request.POST['tourid'])
+    context = {}
+    sesssionkey = Session.objects.get(session_key = request.session.session_key)
+    likeobj = Like.objects.filter(RelPost=tour, User=sesssionkey)
+    if len( likeobj) == 0 :
+        l = Like( RelPost=tour , User=sesssionkey )
+        l.save()
+        context['response'] = '200'
+        context['message'] = 'لایک کردی'
+        context['count'] =  len(Like.objects.filter(RelPost=tour))
+        return JsonResponse(context, encoder=JSONEncoder)
+    else :
+        Like.objects.filter(RelPost=tour, User=sesssionkey).delete()
+        context['response'] = '200'
+        context['message'] = 'لایک کرده بودی قبلا'
+        context['count'] =  len(Like.objects.filter(RelPost=tour))
+        return JsonResponse(context, encoder=JSONEncoder)

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from colorfield.fields import ColorField
+from django.contrib.sessions.models import Session
+
 
 
 # Create your models here.
@@ -216,3 +218,7 @@ class Booking(models.Model):
 
     def __str__(self):
         return "{} - {}".format(self.Passenger.User.username , self.Passenger.PhoneNumber )
+
+class Like(models.Model):
+    RelPost = models.ForeignKey(Tour,on_delete=models.CASCADE)
+    User = models.ForeignKey(Session, on_delete=models.SET_NULL , null=True)

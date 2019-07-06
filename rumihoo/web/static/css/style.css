@@ -247,3 +247,17 @@ ul.green li::before {
         -moz-column-count:3;
         column-count:3;
   }
+
+
+
+.gray{
+  color:gray;
+}
+
+.red{
+  color:red;
+}
+
+.heart{
+    padding: 1%;
+}
