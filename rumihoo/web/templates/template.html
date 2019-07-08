@@ -56,8 +56,8 @@
 <body>
 
 
-<div style="overflow: hidden" >
-    <nav class="navbar navbar-expand-lg navbar-i-light" style="position: relative">
+<div  style="overflow: hidden" >
+    <nav id="menu" class="navbar navbar-expand-lg navbar-i-light" style="position: relative">
 
         <a class="navbar-brand logo" href="/">
             <img src="{% static "image/logowhite.png" %}">
@@ -89,7 +89,7 @@
 
 
             </div>
-            <hr style="width: 100%; color: gainsboro; height: 0.1px; background-color:gainsboro;" />
+            <div><hr style="width: 95%; color: gainsboro; height: 0.1px; background-color:gainsboro; display: inline-block" /></div>
             <div class="navbar-nav collapse navbar-collapse" id="navbarTogglerDemo03" >
                 <a class="nav-item nav-link nav-i-link nav-i-link-p active" href="/">Tours</a>
                 <a class="nav-item nav-link nav-i-link nav-i-link-p " href="#">Destinations</a>
@@ -98,9 +98,9 @@
                 <a class="nav-item nav-link nav-i-link nav-i-link-p " href="#">Contact us</a>
 
 
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" style="margin-right: 5%;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> <i class="fas fa-search"></i> </a>
+                        <a class="nav-link search" href="#"> <i class="fas fa-search"></i> </a>
                     </li>
 
                 </ul>
@@ -112,6 +112,23 @@
 
 
     </nav>
+
+    <div id="searchBox" class="navbar navbar-expand-lg navbar-i-light" style="background-color: black;display: none;position: relative">
+
+        <div class="row" style="padding: 3.38%;width: 100%;">
+            <div class="col-12">
+                <div class="input-group">
+                     <input style="background-color: black;border-top-left-radius: 30px;border-bottom-left-radius: 30px;border-color: #cfcfcf;color: #cfcfcf" type="text" class="form-control corleft" placeholder="Type something to search">
+                            <div class="input-group-append">
+                                <button style="background-color: black;border-top-right-radius: 30px;border-bottom-right-radius: 30px;margin-left: -25%; border-left-color: black; border-right-color: #cfcfcf;border-top-color: #cfcfcf;border-bottom-color: #cfcfcf;color: #cfcfcf" class="btn"  type="button" id="button-addon3">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div id="carouselExampleIndicators" class="carousel slide fullCarousel" data-ride="carousel">
 
@@ -143,6 +160,7 @@
     </div>
 
 </div>
+
 
 
 <!--
@@ -194,10 +212,9 @@
 
 
 
-<div class="container" style="margin-bottom:-5%;">
-    <div class="row maxwid" style="margin-top: 3%">
-        <div class="col-1"></div>
-        <div class="col-10">
+<div class="container" style="margin-bottom:-5%;padding-left: 0%;padding-right: 0%;">
+    <div class="row maxwid" style="margin-top: 3%;">
+        <div class="col-12" >
             <div style="background-color: #a0cbfd;padding: 3%;border-radius: 20px;">
 
                 <div class="row">
@@ -206,16 +223,15 @@
                     </div>
                     <div class="col-5">
                         <div class="input-group mb-3">
-                            <input style="background-color: #cfe5fe;" type="text" class="form-control corleft">
+                            <input style="background-color: #cfe5fe;border-top-left-radius: 30px;border-bottom-left-radius: 30px;" type="text" class="form-control corleft">
                             <div class="input-group-append">
-                                <button style="background-color: #e7f2ff;" class="btn btn-outline-secondary" type="button" id="button-addon2">subscribe</button>
+                                <button style="background-color: #e7f2ff;border-radius: 30px;margin-left: -25%;" class="btn"  type="button" id="button-addon2">subscribe</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-1"></div>
     </div>
 
 </div>
@@ -244,21 +260,21 @@
             <div class="col-6">
 
                 <div>
-                    <span class="fab fa-twitter fa-2x" style="color: dimgray;margin: 1%;"></span>
-                    <span class="fab fa-youtube fa-2x" style="color: dimgray;margin: 1%;"></span>
-                    <span class="fab fa-facebook fa-2x" style="color: dimgray;margin: 1%;"></span>
-                    <span class="fab fa-instagram fa-2x" style="color: dimgray;margin: 1%;"></span>
-                    <span class="fab fa-whatsapp fa-2x" style="color: dimgray;margin: 1%;"></span>
-                    <span class="fab fa-pinterest fa-2x" style="color: dimgray;margin: 1%;"></span>
-                    <span class="fab fa-skype fa-2x" style="color: dimgray;margin: 1%;"></span>
+                    <span class="soc fab fa-twitter fa-2x" style="margin: 1%;"></span>
+                    <span class="soc fab fa-youtube fa-2x" style="margin: 1%;"></span>
+                    <span class="soc fab fa-facebook fa-2x" style="margin: 1%;"></span>
+                    <span class="soc fab fa-instagram fa-2x" style="margin: 1%;"></span>
+                    <span class="soc fab fa-whatsapp fa-2x" style="margin: 1%;"></span>
+                    <span class="soc fab fa-pinterest fa-2x" style="margin: 1%;"></span>
+                    <span class="soc fab fa-skype fa-2x" style="margin: 1%;"></span>
 
 
                 </div>
 
                 <div style="margin-top: 5%;">
-                    <p><i class="fa fa-map-marker" style="color: dimgray">  No.142, Eftekhari Ave, Nasim St, Azadi St, Tehran, Iran </i> <br></p>
-                    <p><i class="fa fa-phone" style="color: dimgray">  +989123456789 </i><br></p>
-                    <p><i class="fa fa-envelope" style="color: dimgray">  info@rumihu.com </i><br></p>
+                    <p><i class="fas fa-map-marker-alt" style="color: dimgray">  No.142, Eftekhari Ave, Nasim St, Azadi St, Tehran, Iran </i> <br></p>
+                    <p><i class="fas fa-phone" style="color: dimgray">  +989123456789 </i><br></p>
+                    <p><i class="far fa-envelope" style="color: dimgray">  info@rumihu.com </i><br></p>
 
                 </div>
 
@@ -270,6 +286,12 @@
 
 
     </div>
+
+</div>
+
+<div class="mt-auto py-3" style="background-color: #282727;">
+
+    <div class="maxwid"><p style="color: #cfcfcf">All Rights Reserved By Rumihu.com 2019</p></div>
 
 </div>
 
@@ -298,8 +320,27 @@
         $('.nextdis').click(function(){ $('.carousel1dis').carousel('next');return false; });
         $('.prevdis').click(function(){ $('.carousel1dis').carousel('prev');return false; });
 
+        $('.nextdis').click(function(){ $('.carousel2dis').carousel('next');return false; });
+        $('.prevdis').click(function(){ $('.carousel2dis').carousel('prev');return false; });
+
         $('.nextblog').click(function(){ $('.carousel1blog').carousel('next');return false; });
         $('.prevblog').click(function(){ $('.carousel1blog').carousel('prev');return false; });
+
+
+        $('.carousel').carousel({
+        interval: false
+        });
+
+
+        $('.search').click(function(){
+           $('#menu').hide();
+           $('#searchBox').show();
+        });
+
+        $('#button-addon3').click(function(){
+           $('#menu').show();
+           $('#searchBox').hide();
+        });
 
     })(jQuery);
 

@@ -17,15 +17,15 @@
 
 
 
-<section class="carousel carousel1 slide maxwid" data-ride="carousel" id="postsCarousel">
+<section class="carousel carousel1 slide maxwid" data-ride="carousel" id="postsCarousel" style="margin-top: 3%;">
     <div class="container">
         <div class="row">
-            <div class="col-6  lead text-left">
+            <div class="col-2  text-left lead">
                 <h4>Tours</h4>
             </div>
-            <div class="col-6 text-right lead">
+            <div class="col-10 text-right lead">
                 <a href="#">see all tours</a>
-                <a href="#"><span class="badge badge-pill badge-light">make your own tour</span></a>
+                <a href="#"><span class="myspan">make your own tour</span></a>
                 <a class="btn btn-secondary-outline prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
                 <a class="btn btn-secondary-outline next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
             </div>
@@ -37,9 +37,9 @@
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
                 <div class="card-deck" style="width: 100%;">
                     {% for tour in tours %}
-                    <div class="card h-100">
+                    <div class="card h-100 curved">
                         <a href="/tour/{{tour.id}}">
-                            <img class="card-img-top responsive" style="width: 100%;" src="{{tour.MainImage|cut:"web/"}} " alt="Carousel 1">
+                            <img class="card-img-top img-responsive responsive" style="width: 100%;" src="{{tour.MainImage|cut:"web/"}} " alt="Carousel 1">
                             <div class="card-body pt-2">
                                 <div  >
                                     <h5>
@@ -49,14 +49,21 @@
                                 <div style="margin-top: 10%;">
 
                                     <span><i class="far fa-clock"></i> {{tour.Dayduration}} days </span>
-                                    <span style="float: right"> <span class="badge badge-pill badge-light" style="color:{{tour.Tourtype.Color}}">{{tour.Tourtype.Name}}</span> </span>
+                                    <span style="float: right"> <span class="tourtype" style="color:{{tour.Tourtype.Color}}">{{tour.Tourtype.Name}}</span> </span>
 
                                 </div>
 
                                 <div style="margin-top: 5%;">
 
                                     <span>{{tour.commentcount}} review </span>
-                                    <span style="float: right"> Stars </span>
+                                    <!--<span style="float: right"> Stars </span> -->
+                                    <span style="float: right;">
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="far fa-star"></span>
+                                        <span class="far fa-star"></span>
+                                    </span>
 
                                 </div>
 
@@ -85,10 +92,10 @@
 <section class="carousel carousel1dis slide maxwid" data-ride="carousel" id="postsCarouseldis" style="margin-top: 3%;">
     <div class="container">
         <div class="row">
-            <div class="col-6  lead text-left">
+            <div class="col-2  lead text-left">
                 <h4>Destinations</h4>
             </div>
-            <div class="col-6 text-right lead">
+            <div class="col-10 text-right lead">
                 <a href="#">see all destinations</a>
                 <a class="btn btn-secondary-outline prevdis" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
                 <a class="btn btn-secondary-outline nextdis" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
@@ -101,7 +108,7 @@
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
                 <div class="card-deck">
                     {% for des in destinations %}
-                    <div class="card h-100 rounded">
+                    <div class="card h-100  curved">
                         <div class="card-img-top card-img-top-250 rounded" style="position: relative">
                             <img class="img-fluid rounded" src="{{des.Image|cut:"web/"}}" >
                             <div class="bottom-left"><a href="/destination/{{des.Name}}"><h4 style="color:white">{{des.Name}}</h4></a></div>
@@ -114,8 +121,39 @@
 
             </div>
             {% endfor %}
+
+
         </div>
     </div>
+
+    <div class="carousel carousel2dis slide" data-ride="carousel" id="postsCarouseldis2">
+
+    <div class="container pt-0 mt-3">
+        <div class="carousel-inner">
+            {% for destinations in destinations_list2 %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                <div class="card-deck">
+                    {% for des in destinations %}
+                    <div class="card h-100  curved">
+                        <div class="card-img-top card-img-top-250 rounded" style="position: relative">
+                            <img class="img-fluid rounded" src="{{des.Image|cut:"web/"}}" >
+                            <div class="bottom-left"><a href="/destination/{{des.Name}}"><h4 style="color:white">{{des.Name}}</h4></a></div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+
+
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+        </div>
+
+
 </section>
 
 

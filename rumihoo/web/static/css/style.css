@@ -261,3 +261,44 @@ ul.green li::before {
 .heart{
     padding: 1%;
 }
+
+
+.myspan{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #909090;
+    padding: 3px 10px 3px 10px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.curved{
+    border-radius: 0.75rem !important;
+}
+
+.checked{
+    color: orange;
+}
+
+
+.tourtype{
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #909090;
+    padding: 3px 10px 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+
+.subscribe{
+    border-radius: 30px !important;
+}
+
+
+span.soc{
+    color: dimgrey;
+}
+span.soc:hover{
+    color: black;
+}

@@ -32,7 +32,27 @@ def index(request):
     if len(tours) % 4 :
         tours = tours + tours[0: 4-len(tours)%4 ]
     context['tours_list'] = grouped(tours, 4)
-    context['destinations_list'] = grouped(Destination.objects.all(), 3)
+
+    des = list(Destination.objects.all())
+
+    if len(des) % 3:
+        des = des + des[0: 3 - len(des) % 3]
+
+    destinations = list(grouped(des , 3 ))
+
+    if (len(des)/3) % 2  :
+        destinations = destinations + destinations[0]
+
+    destinations_list = []
+    destinations_list2 = []
+
+
+    for a ,b in grouped(destinations,2) :
+        destinations_list.append(a)
+        destinations_list2.append(b)
+
+    context['destinations_list'] = destinations_list
+    context['destinations_list2'] = destinations_list2
     context['blog_list'] = grouped(Blog.objects.all(), 3)
 
     return render(request, 'index.html', context)
