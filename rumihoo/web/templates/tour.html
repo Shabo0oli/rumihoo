@@ -9,7 +9,7 @@
 
 <div class="container-fluid" style="margin-top: 1%; margin-left: 3%;">
 
-    <div class="row maxwid">
+    <div class="row maxwidtour">
         <div class="col-8">
 
             {% if bookmessage %}
@@ -111,12 +111,21 @@
 
                     <div class="accordion" id="accordionExample">
                         <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Overview
+                            <div class="card-header cardbackheader" id="headingOne">
+
+                                <div class="row">
+                                    <div class="col-10">
+                                <h6 class="mb-0">
+                                   Overview
+                                </h6>
+                                    </div>
+
+                                    <div class="col-2">
+                                         <button class="btn expand2" style="float: right" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                                                <i class="fas fa-chevron-up"></i>
                                     </button>
-                                </h2>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -161,45 +170,67 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="card-header cardbackheader" id="headingTwo">
+
+                                <div class="row">
+                                    <div class="col-10">
+                                <h6 class="mb-0">
                                         Itinerary
+                                </h6>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <button class="btn  collapsed expand2" style="float: right" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                                                                                        <i class="fas fa-chevron-down"></i>
+
                                     </button>
-                                </h2>
+
+                                    </div>
+                                </div>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div class="card-body">
 
 
+                                    {% for it in itinerary %}
 
 
 
+                                    <div class="accordion" id="accordionExample2{{ it.id }}" style="margin-bottom: 2%;">
 
-                                    <div class="accordion" id="accordionExample2">
-                                        {% for it in itinerary %}
-                                        <div class="card">
-                                            <div class="card-header"  id="heading{{it.id}}">
-                                                <h2 class="mb-0">
-                                                    <button class="btn "
-                                                            {% if forloop.first %} style="color: limegreen;"
+                                        <div class="card" style="border-radius: 12px;">
+                                            <div class="card-header"  id="heading{{it.id}}" style="background-color: #ebebeb;">
+                                                <div class="row" >
+                                                <div class="col-10"><h6 class="mb-0" {% if forloop.first %} style="color: limegreen;"
                                                             {% elif forloop.last %} style="color:darkred;"
+                                                            {% endif %} >
+                                                    {{ it.Title }}
+                                                </h6>
+                                                </div>
+                                                <div class="col-2" style="float: right;">
+                                                    <button class="btn expand"
+                                                            {% if forloop.first %} style="color: limegreen; float: right;"
+                                                            {% elif forloop.last %} style="color:darkred; float: right;"
+                                                            {%  else %}
+                                                            style="float: right;"
                                                             {% endif %}
                                                             type="button" data-toggle="collapse" data-target="#collapse{{it.id}}" aria-expanded="true" aria-controls="collapse{{it.id}}">
-                                                        {{it.Title}}
+                                                        <i class="fas fa-chevron-down"></i>
                                                     </button>
-                                                </h2>
+                                                </div>
+                                                </div>
+
                                             </div>
 
-                                            <div id="collapse{{it.id}}" class="collapse show" aria-labelledby="heading{{it.id}}" data-parent="#accordionExample2">
+                                            <div id="collapse{{it.id}}" class="collapse hide" aria-labelledby="heading{{it.id}}" data-parent="#accordionExample2{{ it.id }}">
                                                 <div class="card-body" style="background-color: #ebebeb">
                                                     {{it.Text|linebreaks}}
                                                 </div>
                                             </div>
                                         </div>
-                                        {% endfor %}
-                                    </div>
 
+                                    </div>
+                                {% endfor %}
 
 
 
@@ -210,12 +241,19 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <b>Includes / Excludes </b>
+                            <div class="card-header cardbackheader" id="headingThree">
+                                <div class="row">
+                                    <div class="col-10">
+                                <h6 class="mb-0">
+                                        Includes / Excludes
+                                </h6>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn  collapsed expand2"  style="float: right" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        <i class="fas fa-chevron-down"></i>
                                     </button>
-                                </h2>
+                                    </div>
+                                </div>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                 <div class="card-body">
@@ -245,7 +283,7 @@
 
 
                         <div class="card">
-                            <div class="card-header" id="headingFour">
+                            <div class="card-header cardbackheader" id="headingFour">
                                 <h2 class="mb-0">
                                     <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                         <b>Reviews </b>
@@ -273,8 +311,10 @@
 
             <div class="card">
                 <div class="card-header" style="background-color: white">
-                    <i class="fas fa-share-alt" style="margin-right: 4%;"></i>
-                            <span class="icon"><i id="likenumber" class=" heart {{classattr}} fa-heart "> {{likesnumber}}</i></span>
+                    <button class="btn btn-primary-outline" style=" background-color: transparent;
+  " data-toggle="modal" data-target="#shareModal"><i class="fas fa-share-alt" style="margin-right: 4%;" ></i></button>
+                       <button class="btn btn-primary-outline" style=" background-color: transparent;
+  ">     <span class="icon"><i id="likenumber" class=" heart {{classattr}} fa-heart ">{{likesnumber}}</i></span> </button>
                     <a href="#" style="float: right;color: orange"> Gallery </a>
                 </div>
 
@@ -307,6 +347,67 @@
             </div>
 
         </div>
+
+
+
+
+
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:transparent; border:none;">
+
+            <div class="row">
+                <div class="col-1">
+                    <button class="button social twitter" style="display: inline-block"  data-sharer="twitter" data-title="{{tour.Title}}   -    http://{{ request.META.HTTP_HOST }}{{ request.path }}"  data-url="http://{{ request.META.HTTP_HOST }}{{ request.path }}">
+                        <i class="fab fa-twitter fa-lg" aria-hidden="true" style="color: white"></i>
+                    </button>
+                </div>
+                <div class="col-1">
+
+                    <a href="https://telegram.me/share/url?url=http://{{ request.META.HTTP_HOST }}{{ request.path }}&text={{tour.Title}}" target="_blank">
+                    <button class="button  social telegram" style="display: inline-block" >
+                        <i class="fab fa-telegram-plane fa-lg" aria-hidden="true" style="color: white"></i>
+                    </button>
+                        </a>
+                </div>
+
+
+                <div class="col-1">
+
+                    <button class="button social facebook" data-sharer="facebook"  data-url="http://{{ request.META.HTTP_HOST }}{{ request.path }}">
+                        <i class="fab fa-facebook-f fa-lg" aria-hidden="true" style="color: white"></i>
+                    </button>
+                </div>
+
+
+                  <div class="col-1">
+
+                <button class="button social linkedin" data-sharer="linkedin" data-url="http://{{ request.META.HTTP_HOST }}{{ request.path }}">
+                        <i class="fab fa-linkedin fa-lg" aria-hidden="true" style="color: white"></i>
+                    </button>
+                </div>
+
+
+
+                <div class="col-1">
+
+
+                    <button class="button social email" data-sharer="email" data-title="{{tour.Title}}  -  {{tour.Text|striptags}}" data-url="http://{{ request.META.HTTP_HOST }}{{ request.path }}" data-subject="{{tour.Title}}">
+                        <i class="far fa-envelope fa-lg" aria-hidden="true" style="color: white"></i>
+                    </button>
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
 
         <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

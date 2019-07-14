@@ -18,6 +18,9 @@
 
 <script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+
+
 
         <script>
         $(document).ready(function(){
@@ -342,7 +345,37 @@
            $('#searchBox').hide();
         });
 
+
+    $('.expand').on('click', function() {
+    var $el = $(this),
+      textNode = this.lastChild;
+    $el.find('i').toggleClass('fa-chevron-down fa-chevron-up');
+  });
+
+
+     $('.expand2').on('click', function() {
+    var $el = $(this),
+      textNode = this.lastChild;
+
+
+    if( $el.find('i').hasClass('fa-chevron-down'))
+    {
+        $('.expand2').each(function () {
+           $(this).find('i').removeClass('fa-chevron-up');
+           $(this).find('i').addClass('fa-chevron-down');
+        });
+
+    }
+
+    $el.find('i').toggleClass('fa-chevron-down fa-chevron-up');
+  });
+
+
+
+
     })(jQuery);
+
+
 
 </script>
 
