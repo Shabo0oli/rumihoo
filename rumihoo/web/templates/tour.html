@@ -281,7 +281,7 @@
                         </div>
 
 
-
+                        {% if comments %}
                         <div class="card">
                             <div class="card-header cardbackheader" id="headingFour">
                                 <h2 class="mb-0">
@@ -293,9 +293,53 @@
                             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                                 <div class="card-body">
 
+                                    {% for comment in comments %}
+
+                                    <div class="container" style="margin-bottom: 5%;">
+
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <img src="/static/image/avatar-default.png" class="img-thumbnail" style="border-radius: 50%">
+                                            </div>
+                                            <div class="col-8">
+                                                <p style="margin-bottom:-0.1%;">{{ comment.Author }}</p>
+                                                <p > <small class="text-muted"> {{ comment.Date }} </small> </p>
+                                            </div>
+
+                                            <div class="col-3">
+
+                                             <button class="btn btn-primary-outline" style=" background-color: transparent; float: right;"><span class="icon"><i id="likenumber{{ comment.id }}" class=" heart {{classattr}} fa-heart ">{{comment.likesnumber}}</i></span> </button>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    <div class="row" style="margin-left: 3%">
+                                        <div><b>Perfect</b> <br/></div>
+                                        <div>
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="fas fa-star checked"></span>
+                                        <span class="fas fa-star checked"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-left: 3%;margin-top:1%;">
+                                        {{ comment.Text }}
+                                    </div>
+
+
+                                    </div>
+
+                                    {% endfor %}
+
                                 </div>
                             </div>
                         </div>
+
+                    {%  endif %}
 
 
                     </div>
@@ -327,7 +371,12 @@
 
 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><p style="margin: 0%;"> From <b> €  {{tour.MinPrice}} </b> </p></li>
+                    <li class="list-group-item">
+                        {%  if tour.MinPrice %}<p style="margin: 0%;"> From <b> €  {{tour.MinPrice}} </b> </p>
+                        {%  elif tour.Price %}<p style="margin: 0%;">  €  {{tour.MinPrice}} </b> </p>
+                        {% else %} <p style="margin: 0%;"> {{ tour.PriceText }} </p> {% endif %}
+
+                    </li>
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-6">

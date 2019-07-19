@@ -76,6 +76,7 @@ class Tour(models.Model):
 
     MinPrice = models.IntegerField(blank=True ,null=True)
     Price = models.IntegerField(blank=True ,null=True)
+    PriceText = models.CharField(max_length=100 , null=True , blank=True)
 
     MainImage = models.ImageField(upload_to='web/static/image/tourImage/', null=True , blank=True)
 
@@ -107,6 +108,8 @@ class CommentTour(models.Model):
     Text = models.CharField(max_length=200)
     Author = models.CharField(max_length=60)
     Tour = models.ForeignKey(Tour , on_delete=models.CASCADE)
+    Date = models.DateField(null=True , blank=True)
+
 
 
 class Destination(models.Model):
@@ -188,6 +191,7 @@ class Blog(models.Model):
     Text = models.TextField()
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Title = models.CharField(max_length=100)
+    Date = models.DateField(null=True , blank=True)
 
     def __str__(self):
         return "{}".format(self.Title)
