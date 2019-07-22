@@ -139,7 +139,34 @@
 
     <div id="carouselExampleIndicators" class="carousel slide fullCarousel" data-ride="carousel">
 
+        {% if tour.MainImage %}
+
+
         <div class="carousel-inner">
+
+
+
+
+
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="/{{tour.MainImage|cut:"web/"}}" >
+                <div class="carousel-caption">
+                    <h1>{{tour.Title}}</h1>
+                </div>
+            </div>
+
+
+        </div>
+
+        
+
+        {% else %}
+        <div class="carousel-inner">
+
+
+
+
+
             <div class="carousel-item active">
                 <img class="d-block w-100" src="/static/image/yazd.png" alt="First slide">
                 <div class="carousel-caption">
@@ -161,6 +188,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+        {% endif %}
 
 
 
