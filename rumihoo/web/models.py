@@ -192,6 +192,7 @@ class Blog(models.Model):
     Image = models.ImageField(upload_to='web/static/image/DistImage/')
     Title = models.CharField(max_length=100)
     Date = models.DateField(null=True , blank=True)
+    Lead = models.CharField(max_length=200,blank=True,null=True)
 
     def __str__(self):
         return "{}".format(self.Title)
@@ -226,3 +227,10 @@ class Booking(models.Model):
 class Like(models.Model):
     RelPost = models.ForeignKey(Tour,on_delete=models.CASCADE)
     User = models.ForeignKey(Session, on_delete=models.SET_NULL , null=True)
+
+
+
+class MainPageSlider(models.Model):
+    Image = models.ImageField(upload_to='web/static/image/SliderImage/')
+    Title = models.CharField(max_length=100 , null=True , blank=True)
+    Link = models.URLField(null=True,blank=True)

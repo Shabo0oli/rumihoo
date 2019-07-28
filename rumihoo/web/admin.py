@@ -27,6 +27,7 @@ admin.site.register(Nature)
 admin.site.register(MustSee)
 admin.site.register(Like)
 admin.site.register(CommentTour)
+admin.site.register(MainPageSlider)
 
 
 

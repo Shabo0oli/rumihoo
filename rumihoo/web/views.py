@@ -51,6 +51,8 @@ def index(request):
         destinations_list.append(a)
         destinations_list2.append(b)
 
+    context['sliders'] = MainPageSlider.objects.all()
+
     context['destinations_list'] = destinations_list
     context['destinations_list2'] = destinations_list2
     context['blog_list'] = grouped(Blog.objects.all(), 3)
