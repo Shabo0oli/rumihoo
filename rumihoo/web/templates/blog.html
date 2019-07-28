@@ -1,0 +1,55 @@
+{% extends "template.html"%}
+{% load staticfiles %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid" style="margin-top: 1%; margin-left: 3%;">
+
+    <div class="row maxwidtour">
+
+
+
+        <div class="col-11">
+            <div class="card">
+
+                <div class="card-header" style="background-color: white">
+                    <div class="row">
+                        <h4 style="color: #07036a;"> {{blog.Title}} </h4>
+                        <br/>
+                        {% if blog.Lead %} <p> {{blog.Lead}} </p> {% endif %}
+
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+                        {{blog.Text}}
+                    </p>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

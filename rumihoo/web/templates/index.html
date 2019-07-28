@@ -185,7 +185,7 @@
                         <div class="card" style="border: none; background-color: #cfcfcf">
                             <img class="card-img-top-250" src="{{post.Image|cut:"web/"}}" >
                             <div class="card-body pt-4">
-                                <h6> {{post.Title}} </h6>
+                                <a href="/blog/{{post.id}}"> <h6> {{post.Title}} </h6> </a>
                                 <p> {{post.Text|truncatewords:30}} </p>
                             </div>
                         </div>

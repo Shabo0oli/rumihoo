@@ -144,3 +144,12 @@ def like(request):
         context['message'] = 'لایک کرده بودی قبلا'
         context['count'] =  len(Like.objects.filter(RelPost=tour))
         return JsonResponse(context, encoder=JSONEncoder)
+
+
+def blog(request , id):
+
+    blog = Blog.objects.get(id=id)
+    context = {}
+    context['blog'] = blog
+    return render(request, 'blog.html', context)
+

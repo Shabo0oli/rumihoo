@@ -177,6 +177,24 @@
 
         </div>
 
+        {% elif blog.Image %}
+
+         <div class="carousel-inner">
+
+
+
+
+
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="/{{blog.Image|cut:"web/"}}" >
+                <div class="carousel-caption">
+                    <h1>{{blog.Title}}</h1>
+                </div>
+            </div>
+
+
+        </div>
+
 
 
         {% elif sliders %}

@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from colorfield.fields import ColorField
 from django.contrib.sessions.models import Session
+from taggit.managers import TaggableManager
+
 
 
 
@@ -193,6 +195,7 @@ class Blog(models.Model):
     Title = models.CharField(max_length=100)
     Date = models.DateField(null=True , blank=True)
     Lead = models.CharField(max_length=200,blank=True,null=True)
+    tags = TaggableManager()
 
     def __str__(self):
         return "{}".format(self.Title)
